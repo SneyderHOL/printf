@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <stdio.h>
 /**
  *num_len - converts an integer to a string
  *@num: integer argument
@@ -16,10 +17,9 @@ int num_len(int num, int base)
 	}
 	if (num < 0 && base == 10)
 	{
-		num = num * -1;
 		negative = 1;
 	}
-	for (; num != 0; pos++)
+	for (pos = 0; num != 0; pos++)
 	{
 		num = num / base;
 	}
@@ -36,7 +36,8 @@ int num_len(int num, int base)
  */
 void _itoa(char *str, int num, int base)
 {
-	int aux = 0, negative = 0, pos = 0;
+	int negative = 0, pos = 0;
+	unsigned int u_num = 0, aux = 0, u_base = 0;
 
 	if (num == 0)
 	{
@@ -46,17 +47,20 @@ void _itoa(char *str, int num, int base)
 	}
 	if (num < 0 && base == 10)
 	{
-		num = num * -1;
+		if (num != -2147483648)
+			num = num * -1;
 		negative = 1;
 	}
-	for (; num != 0; pos++)
+	u_num = num;
+	u_base = base;
+	for (pos = 0; u_num != 0; pos++)
 	{
-		aux = num % base;
+		aux = u_num % u_base;
 		if (aux > 9)
 			str[pos] = (aux - 10) + 97;
 		else
 			str[pos] = aux + '0';
-		num = num / base;
+		u_num = u_num / u_base;
 	}
 	if (negative == 1)
 		str[pos++] = '-';
