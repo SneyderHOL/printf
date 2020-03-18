@@ -118,8 +118,11 @@ Your code will be compiled this way:
 ```
 - We strongly encourage you to work all together on a set of tests
 If the task does not specify what to do with an edge case, do the same as printf
+
 #Printf
+
 #Functions
+
 | Function name | Description                    |
 | ------------- | ------------------------------ |
 | `itoa()`      | Convert integer to alpha.       |
@@ -128,7 +131,9 @@ If the task does not specify what to do with an edge case, do the same as printf
 | `holberton()`      | Custom library.       |
 | `str_size()`      | Convert integer to alpha.       |
 | `printf()`   | **Print the string**     |
+
 #Libraries
+
 | Library name |               |
 | ------------- | ------------------------------ |
 | `holberton()`      | Custom library.       |
