@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 	    (format[fpos] == '%' && format[fpos + 1] == '\0'))
 		return (-1);
 	va_start(main_list, format);
-	for (fpos = 0; format[fpos] != '\0'; fpos++)
+	for (fpos = 0; format[fpos] != '\0'; fpos++, aux = 0)
 	{
 		if (format[fpos] != '%')
 		{
@@ -34,14 +34,15 @@ int _printf(const char *format, ...)
 				for (aux = 0; aux < 5; aux++)
 					if (format[fpos + 1] == frame[aux].c[0])
 					{
-						add = frame[aux].func(main_list, buffer, bpos);
-						fpos++;
+						add = frame[aux].func(main_list, buffer, bpos), fpos++;
 						break;
 					}
 				bpos += add;
 			}
+		if (aux > 4)
+			buffer[bpos++] = '%';
 	}
-	write(1, buffer, bpos);
+	buffer[bpos] = '\0', write(1, buffer, bpos);
 	free(buffer), va_end(main_list);
 	return (bpos);
 }
