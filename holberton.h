@@ -3,8 +3,6 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
-#define BUFF_SIZE 2048
-#define FR_SIZE 5
 /**
  *struct fmt - struct to use the format
  *@c: char pointer
